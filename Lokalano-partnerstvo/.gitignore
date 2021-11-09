@@ -1,0 +1,6 @@
+obj
+bin
+appsettings.json
+*.db
+API/baza.db-shm
+API/baza.db-wal
