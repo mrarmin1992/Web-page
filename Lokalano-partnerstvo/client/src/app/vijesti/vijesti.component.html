@@ -1,0 +1,103 @@
+<div class="vijestiBanner">
+  <p class="vijest naslovBaner">VIJESTI</p>
+  <p class="opisvijesti">NEWS CORNER</p>
+</div>
+<div class="container-fluid pb-4 pt-4">
+  <div style="margin-left: 15%; margin-right: 10%;">
+      <div class="row">
+        <ol class="breadcrumb hidden-xs-down mb-5 ml-2">
+          <li class="breadcrumb-item"><a routerLink="">Početna</a></li>
+          <li class="breadcrumb-item">Vijesti</li>
+        </ol>
+          <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">VIJESTI</div>
+              </div>
+              <div *ngIf="totalCount == 0" class="col-lg-8">
+                Nije pronađena niti jedna vijest za odabrani kriterij.
+              </div>
+              <div *ngFor="let vijest of vijesti" class="row pb-4">
+                  <div class="col-md-5">
+                      <div class="fh5co_hover_news_img">
+                          <div class="fh5co_news_img"><img src="{{vijest.imageUrl}}" alt="{{vijest.naslov}}"/>
+                              <div class="fh5co_suceefh5co_height_position_absolute"></div></div>
+                          <div></div>
+
+                      </div>
+                  </div>
+                  <div class="col-md-7 animate-box">
+                      <a style="text-decoration: none;" routerLink="/vijesti/{{vijest.id}}" href="javascript:void(0)" class="fh5co_magna py-2"><h3>{{vijest.naslov}}</h3></a> <br><a style="text-decoration: none;" class="fh5co_mini_time py-3">
+                      {{vijest.datum | date}} </a>
+                      <div class="fh5co_consectetur"> {{vijest.podnaslov}}
+                      </div>
+                  </div>
+              </div>
+              <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > 4">
+                <app-pager [pageSize]="this.vijestiParams.pageSize"
+                           [totalCount]="totalCount"
+                           (pageChanged)="onPageChanged($event)"
+                ></app-pager>
+              </div>
+          </div>
+          <div class="col-md-3 animate-box">
+            <div>
+              <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">PRETRAGA</div>
+          </div>
+          <div class="clearfix"></div>
+            <div class="form mb-5 card-sl" *ngIf="vijesti"> <i (click)="onSearch()" style="cursor: pointer;" class="fa fa-search"></i> <input (keyup.enter)="onSearch()" #search type="text" class="form-control form-input" placeholder="Pretraga"> <span (click)="onReset()" style="cursor: pointer;" class="left-pan"><i class="fa fa-trash"></i></span>
+            </div>
+            <div>
+              <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">PARTNERI</div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="fh5co_tags_all mb-5">
+            <a (click)="onPartnerSelected(null)" href="javascript:void(0);" class="fh5co_tagg card-sl">Svi</a>
+              <a *ngFor="let partner of partneri" (click)="onPartnerSelected(partner.ime)" href="javascript:void(0);" class="fh5co_tagg card-sl">{{partner.ime}}</a>
+          </div>
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">KATEGORIJE</div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="fh5co_tags_all mb-5">
+                  <a *ngFor="let kategorija of kategorije" (click)="onKategorijaSelected(kategorija.id)" href="javascript:void(0);" class="fh5co_tagg card-sl">{{kategorija.naziv}}</a>
+              </div>
+              <div *ngIf="kursTotalCount > 0">
+                <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">KURSEVI</div>
+              </div>
+              <div *ngFor="let kurs of kursevi" class="row pb-3">
+                  <div class="col-5 align-self-center">
+                    <a href="javascript:void(0)" routerLink="/kursevi/{{kurs.id}}">
+                      <img src="{{kurs.imageUrl}}" alt="{{kurs.naziv}}" class="fh5co_most_trading"/>
+                    </a>
+                  </div>
+                  <div class="col-7">
+                    <a href="javascript:void(0)" routerLink="/kursevi/{{kurs.id}}">
+                      <div class="most_fh5co_treding_font">{{kurs.naziv}}</div>
+                      <div class="most_fh5co_treding_font_123">{{kurs.datumPocetka | date}}</div>
+                    </a>
+                  </div>
+              </div>
+              </div>
+              <div *ngIf="dogadjajTotalCount > 0">
+                <div class="mt-5">
+                  <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">DOGAĐAJI</div>
+              </div>
+              <div *ngFor="let dogadjaj of dogadjaji" class="row pb-3">
+                  <div class="col-5 align-self-center">
+                    <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaj.id}}">
+                      <img src="{{dogadjaj.imageUrl}}" alt="{{dogadjaj.naziv}}" class="fh5co_most_trading"/>
+                    </a>
+                  </div>
+                  <div class="col-7">
+                    <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaj.id}}">
+                      <div class="most_fh5co_treding_font">{{dogadjaj.naziv}}</div>
+                      <div class="most_fh5co_treding_font_123">{{dogadjaj.datumPocetka | date}}</div>
+                    </a>
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

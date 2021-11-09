@@ -1,0 +1,23 @@
+<div class="card h-100 box-shadow">
+  <!--<img src="{{vijest.imageUrl}}" alt="{{vijest.naslov}}" class="img-fluid"/>-->
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
+  <div class="card-body d-flex flex-column">
+    <a routerLink="/obuke/{{obuka.id}}">
+      <h6 class="text-uppercase">{{obuka.naziv}}</h6>
+    </a>
+    <span class="mb-2">
+      {{obuka.obukaKategorija}}
+    </span>
+    <div class="d-flex justify-content-around align-items-center">
+      <div class="btn-group mt-auto">
+        <button routerLink="/obuke/{{obuka.id}}" type="button" class="btn btn-outline-secondary">
+          View
+        </button>
+        <button type="button" routerLink="/prijava-obuka/{{obuka.id}}" class="btn btn-outline-secondary">
+          Prijavi se
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

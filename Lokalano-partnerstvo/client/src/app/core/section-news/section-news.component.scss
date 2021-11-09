@@ -1,0 +1,193 @@
+
+$yellow:#f5bc04;
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow:inset $top $left $blur $color;
+		-moz-box-shadow:inset $top $left $blur $color;
+		-o-box-shadow:inset $top $left $blur $color;
+		box-shadow:inset $top $left $blur $color;
+	} @else {
+		-webkit-box-shadow: $top $left $blur $color;
+		-moz-box-shadow: $top $left $blur $color;
+		-o-box-shadow: $top $left $blur $color;
+		box-shadow: $top $left $blur $color;
+	}
+}
+@mixin clip-path($clip) {
+	-webkit-clip-path: $clip;
+	-moz-clip-path: $clip;
+	-ms-clip-path: $clip;
+	clip-path: $clip;
+}
+@mixin transition($transition) {
+	-moz-transition:    all $transition ease;
+	-o-transition:      all $transition ease;
+	-webkit-transition: all $transition ease;
+	-ms-transition: 	all $transition ease;
+	transition:         all $transition ease;
+}
+
+
+
+
+
+.fh5co_display_table:hover, .fh5co_display_table:focus {
+	display: table;
+	color: #777;
+	border: 1px solid $yellow!important;
+	cursor: pointer;
+	@include border-radius(50%);
+}
+.fh5co_verticle_middle {
+	vertical-align: middle;
+	display: table-cell;
+}
+.fh5co_country_width {
+	width: 40px;
+	margin: 0 10px;
+	padding-bottom: 25px;
+}
+.fh5co_text_select_option {
+	//padding-bottom: 20px;
+	margin: 0 10px;
+	position: relative;
+	top: -10px;
+}
+
+.fh5co_suceefh5co_height {
+	height: 550px;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+.fh5co_suceefh5co_height  img {
+	width: auto;
+	height: 550px;
+	object-fit: cover;
+
+}
+.paddding {
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+.fh5co_suceefh5co_height_position_absolute {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0.78) 100%);
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0.78) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0.78) 100%);
+	z-index: 5;
+	top: 0;
+}
+.fh5co_suceefh5co_height_position_absolute_font {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: #ed563b;
+	z-index: 7;
+	top: 75%;
+	left: 5%;
+	padding: 0 10px;
+}
+.fh5co_good_font {
+	color: #ed563b;
+	font-size: 26px;
+	word-wrap: break-word;
+}
+.fh5co_good_font:hover, .fh5co_good_font:focus {
+	color: #fff;
+	word-wrap: break-word;
+	text-decoration: none;
+}
+.fh5co_suceefh5co_height_2 {
+	height: 275px;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+.fh5co_suceefh5co_height_2 > img {
+	height: 300px;
+	width: 100%;
+}
+.fh5co_good_font_2 {
+	font-size: 25px;
+	color: #fff;
+	word-wrap: break-word;
+	text-decoration: none;
+}
+.fh5co_good_font_2:hover, .fh5co_good_font_2:focus {
+	color: #ed563b;
+	word-wrap: break-word;
+	text-decoration: none;
+}
+.fh5co_suceefh5co_height_position_absolute_font_2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: #ed563b;
+	z-index: 7;
+	top: 65%;
+	left: 5%;
+	padding: 0 10px;
+}
+.fh5co_heading {
+	font-size: 20px;
+	color: #424040;
+}
+.fh5co_heading_border_bottom {
+	border-bottom: 1px solid #777;
+}
+.fh5co_latest_trading_img {
+	height: 326px;
+	overflow: hidden;
+}
+.fh5co_latest_trading_img > img {
+	height: 340px;
+	min-width: 100%;
+}
+.fh5co_img_special_relative {
+	position: relative;
+	right: 40%;
+}
+.fh5co_heading {
+    font-size: 24px;
+    color: #222;
+    padding-left: 4%;
+}
+.py-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+  @media only screen and (max-device-width: 1366px) {
+    .parallax {
+      background-attachment: scroll;
+    }
+  }
+	.parallax {
+    
+		background-image: url('/assets/img/mreza9.jpg');
+		min-height: 550px; 
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 1900px 1000px;
+		
+		
+	
+	
+	
+		
+	}

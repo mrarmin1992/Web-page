@@ -1,0 +1,140 @@
+<div class="container-fluid pt-5 mt-5">
+  <div class="row pt-5">
+    <h1 class="mb-5">
+      Prijave
+    </h1>
+    <div class="col-lg-4">
+      <div class="form-row">
+        <div class="form-group mb-3">
+          <label for="search"><strong>Pretraga</strong></label>
+          <div class="input-group rounded">
+            <input
+              #search
+              (keyup.enter)="onSearch()"
+              id="search"
+              type="search"
+              class="form-control rounded"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <button [disabled]="search.value === ''" (click)="onSearch()" type="button" class="btn btn-primary">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="pogledano"><strong>Pregledano</strong></label>
+          <select
+            (change)="onPogledanoSelected($event.target.value)"
+            id="pogledano"
+            class="form-control"
+            name="pogledano"
+          >
+            <option *ngFor="let sort of pogledanoOptions" [value]="sort.value">
+              {{ sort.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="kursevi"><strong>Kursevi</strong></label>
+          <select
+            (change)="onKursSelected($event.target.value)"
+            id="kursevi"
+            class="form-control"
+            name="kursevi"
+          >
+            <option
+              *ngFor="let kurs of selectKurs"
+              [selected]="kursParams.kursId === kurs.id"
+              value="{{ kurs.id }}"
+            >
+              {{ kurs.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="obuke"><strong>Obuke</strong></label>
+          <select
+            (change)="onObukaSelected($event.target.value)"
+            id="obuke"
+            class="form-control"
+            name="obuke"
+          >
+            <option
+              *ngFor="let obuka of selectObuka"
+              [selected]="kursParams.obukaId === obuka.id"
+              value="{{ obuka.id }}"
+            >
+              {{ obuka.name }}
+            </option>
+          </select>
+        </div>
+
+        <button (click)="onReset()" type="button" class="btn btn-primary">
+          Poništi filtere
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-8 pt-4" *ngIf="totalCount === 0">
+      Nema pronađenih prijava za odabrane filtere
+    </div>
+    <div class="col-lg-8 pt-4" *ngIf="prijave">
+      <accordion [isAnimated]="true">
+        <accordion-group *ngFor="let prijava of prijave">
+          <button
+            class="
+              btn btn-block
+              justify-content-between
+              d-flex
+              w-100
+              shadow-none
+            "
+            accordion-heading
+            type="button"
+          >
+            <div class="pull-left float-left">
+              <strong>{{ prijava.ime }} {{ prijava.prezime }}</strong>
+            </div>
+          </button>
+          <div class="card pt-2 pb-2">
+            <div class="card-body">
+              <a (click)="delete(prijava)" class="mr-2 btn pull-right"
+                ><i class="fa fa-2x fa-trash"></i
+              ></a>
+              <span class="form-group">
+                <label for="pogledano">Pregledano</label>
+                <br />
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    (change)="checkValue(prijava)"
+                    name="pogledano"
+                    [(ngModel)]="prijava.pogledano"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </span>
+              <p class="card-title">
+                <b>Datum prijave: </b>{{ prijava.datumPrijave | date }}
+              </p>
+              <p class="card-title">
+                <b>Datum rođenja: </b>{{ prijava.datumRodjenja | date }}
+              </p>
+              <p class="card-title"><b>Telefon: </b>{{ prijava.telefon }}</p>
+              <p class="card-title"><b>Email: </b>{{ prijava.email }}</p>
+              <p class="card-title">
+                <b>Zanimanje: </b>{{ prijava.zanimanje }}
+              </p>
+              <p class="card-title">
+                <b>Prethodno znanje: </b>{{ prijava.prethodnoZnanje }}
+              </p>
+            </div>
+          </div>
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+</div>

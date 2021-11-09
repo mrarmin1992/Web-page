@@ -1,0 +1,65 @@
+#container {
+  background-image: linear-gradient(
+      to top,
+      rgb(255, 255, 255) 10%,
+      rgba(41, 96, 168, 0) 100%
+    ),
+    url(../../../../assets/img/mreza9.jpg);
+
+  display: flex;
+  overflow-x: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0 auto;
+
+}
+
+img {
+  object-fit: cover;
+  width: 8rem;
+  height: 8rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.1);
+  
+}
+.card-title{
+  text-align: center;
+  margin-top: 5%;
+}
+.card-text{
+  text-align: center;
+  padding: 10% 5%;
+}
+
+a {text-align: center;
+}
+.carddetails{
+  padding: 15% 0;
+  margin-top: 26%;
+}
+.carddetails1{
+  margin-top: 0;
+  padding: 15% 0;
+  width: 50%;
+;
+  
+}
+.slikapartner{
+  display: block;
+  margin-left: 35%;
+  margin-right: 35%;
+  width: 30%;
+}
+.btn{
+  display: block;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  width: 40%;
+  background-color: #ed563b;
+  border: 0;
+  color: #ffffff;
+  font-size: 110%;
+  
+  
+
+}

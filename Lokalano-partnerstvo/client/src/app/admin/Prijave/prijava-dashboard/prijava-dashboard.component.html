@@ -1,0 +1,36 @@
+<div *ngIf="prijava" class="container pt-5 mt-5">
+  <div class="card-header">
+    <h3 class="mb-0">{{ prijava.ime }} {{ prijava.prezime }}</h3>
+  </div>
+  <div class="card-body">
+    <a class="mr-2 btn pull-right"><i class="fa fa-2x fa-trash"></i></a>
+    <span class="form-group">
+      <label for="pogledano">Pogledano</label>
+      <br />
+      <label class="switch">
+        <input
+          type="checkbox"
+          name="pogledano"
+          (change)="checkValue(prijava.pogledano)"
+          [(ngModel)]="prijava.pogledano"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <span class="slider round"></span>
+      </label>
+    </span>
+    <!--<a routerLink="/dashboard/izmjena-publikacija/{{prijava.Id}}"class="mr-2 btn pull-right"><i class="fa fa-2x fa-wrench"></i></a>-->
+    <p class="card-title">
+      <b>Datum prijave: </b>{{ prijava.datumPrijave | date }}
+    </p>
+    <p class="card-title">
+      <b>Datum rođenja: </b>{{ prijava.datumRodjenja | date }}
+    </p>
+    <p class="card-title"><b>Telefon: </b>{{ prijava.telefon }}</p>
+    <p class="card-title"><b>Email: </b>{{ prijava.email }}</p>
+    <p class="card-title"><b>Zanimanje: </b>{{ prijava.zanimanje }}</p>
+    <p class="card-title">
+      <b>Prethodno znanje: </b>{{ prijava.prethodnoZnanje }}
+    </p>
+    <p *ngIf="event" class="card-title"><b>Kurs: </b>{{ event.naziv }}</p>
+  </div>
+</div>

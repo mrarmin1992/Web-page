@@ -1,0 +1,82 @@
+<div class="parallax">
+</div>
+<div *ngIf="dogadjaji" class="container-fluid paddding">
+    <div class="row mx-0">
+
+        <div *ngIf="dogadjaji[0]" class="col-md-6 col-12 paddding animate-box">
+            <div class="fh5co_suceefh5co_height">
+              <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[0].id}}">
+                <img src="{{dogadjaji[0].imageUrl}}" alt="{{dogadjaji[0].naziv}}" />
+              </a>
+                <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                <div class="fh5co_suceefh5co_height_position_absolute_font">
+                    <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{dogadjaji[0].datumObjave | date}}
+
+                    <div class=""><a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[0].id}}" class="fh5co_good_font_2">{{dogadjaji[0].naziv}}</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+              <div *ngIf="dogadjaji[1]" class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
+                <div class="fh5co_suceefh5co_height_2">
+                  <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[1].id}}">
+                    <img src="{{dogadjaji[1].imageUrl}}" alt="{{dogadjaji[1].naziv}}"/>
+                  </a>
+                    <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                    <div class="fh5co_suceefh5co_height_position_absolute_font_2">
+                         <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{dogadjaji[1].datumObjave | date}}
+                        <div class=""><a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[1].id}}" class="fh5co_good_font_2"> {{dogadjaji[1].naziv}} </a></div>
+                    </div>
+                </div>
+            </div>
+                <div *ngIf="dogadjaji[2]" class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
+                    <div class="fh5co_suceefh5co_height_2">
+                      <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[2].id}}">
+                        <img src="{{dogadjaji[2].imageUrl}}" alt="{{dogadjaji[2].naziv}}"/>
+                      </a>
+                        <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                        <div class="fh5co_suceefh5co_height_position_absolute_font_2">
+                             <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{dogadjaji[2].datumObjave | date}}
+                            <div class=""><a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[2].id}}" class="fh5co_good_font_2"> {{dogadjaji[2].naziv}} </a></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="dogadjaji[3]" class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
+                  <div class="fh5co_suceefh5co_height_2">
+                    <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[3].id}}">
+                      <img src="{{dogadjaji[3].imageUrl}}" alt="{{dogadjaji[3].naziv}}"/>
+                    </a>
+                      <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                      <div class="fh5co_suceefh5co_height_position_absolute_font_2">
+                           <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{dogadjaji[3].datumObjave | date}}
+                          <div class=""><a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[3].id}}" class="fh5co_good_font_2"> {{dogadjaji[3].naziv}} </a></div>
+                      </div>
+                  </div>
+              </div>
+              <div *ngIf="dogadjaji[4]" class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
+                <div class="fh5co_suceefh5co_height_2">
+                  <a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[4].id}}">
+                    <img src="{{dogadjaji[4].imageUrl}}" alt="{{dogadjaji[4].naziv}}"/>
+                  </a>
+                    <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                    <div class="fh5co_suceefh5co_height_position_absolute_font_2">
+                         <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{dogadjaji[4].datumObjave | date}}
+                        <div class=""><a href="javascript:void(0)" routerLink="/dogadjaji/{{dogadjaji[4].id}}" class="fh5co_good_font_2"> {{dogadjaji[4].naziv}} </a></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

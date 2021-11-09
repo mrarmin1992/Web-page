@@ -1,0 +1,70 @@
+<div id="content" >
+				<div class="grid">
+					<figure *ngIf="kursevi[0]" class="effect-bubba">
+						<img src="{{kursevi[0].imageUrl}}" alt="{{kursevi[0].naziv}}"/>
+						<figcaption>
+							<h2>{{kursevi[0].naziv}}</h2>
+							<p>{{kursevi[0].datumPocetka | date}}</p>
+							<a href="javascript:void(0)" routerLink="/kursevi/{{kursevi[0].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+					<figure *ngIf="kursevi[1]" class="effect-bubba">
+						<img src="{{kursevi[1].imageUrl}}" alt="{{kursevi[1].naziv}}"/>
+						<figcaption>
+							<h2>{{kursevi[1].naziv}}</h2>
+							<p>{{kursevi[1].datumPocetka | date}}</p>
+							<a href="javascript:void(0)" routerLink="/kursevi/{{kursevi[1].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+					<figure *ngIf="kursevi[2]" class="effect-bubba">
+						<img src="{{kursevi[2].imageUrl}}" alt="{{kursevi[2].naziv}}"/>
+						<figcaption>
+							<h2>{{kursevi[2].naziv}}</h2>
+							<p>{{kursevi[2].datumPocetka | date}}</p>
+							<a href="javascript:void(0)" routerLink="/kursevi/{{kursevi[2].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+					<figure *ngIf="kursevi[3]" class="effect-bubba">
+						<img src="{{kursevi[3].imageUrl}}" alt="{{kursevi[3].naziv}}"/>
+						<figcaption>
+							<h2>{{kursevi[3].naziv}}</h2>
+							<p>{{kursevi[3].datumPocetka | date}}</p>
+							<a href="javascript:void(0)" routerLink="/kursevi/{{kursevi[3].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+					<figure *ngIf="obuke[0]" class="effect-bubba">
+						<img src="{{obuke[0].imageUrl}}" alt="{{obuke[0].naziv}}"/>
+						<figcaption>
+							<h2>{{obuke[0].naziv}}</h2>
+							<p>{{obuke[0].datumPocetka | date}}</p>
+							<a href="javascript:void(0)" routerLink="/obuke/{{obuke[0].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+          <figure *ngIf="obuke[1]" class="effect-bubba">
+						<img src="{{obuke[1].imageUrl}}" alt="{{obuke[1].naziv}}"/>
+						<figcaption>
+							<h2>{{obuke[1].naziv}}</h2>
+							<p>{{obuke[1].kratakOpis}}</p>
+							<a href="javascript:void(0)" routerLink="/obuke/{{obuke[1].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+          <figure *ngIf="obuke[2]" class="effect-bubba">
+						<img src="{{obuke[2].imageUrl}}" alt="{{obuke[2].naziv}}"/>
+						<figcaption>
+							<h2>{{obuke[2].naziv}}</h2>
+							<p>{{obuke[2].kratakOpis}}</p>
+							<a href="javascript:void(0)" routerLink="/obuke/{{obuke[2].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+					<figure *ngIf="obuke[3]" class="effect-bubba">
+						<img src="{{obuke[3].imageUrl}}" alt="{{obuke[3].naziv}}"/>
+						<figcaption>
+							<h2>{{obuke[2].naziv}}</h2>
+							<p>{{obuke[2].kratakOpis}}</p>
+							<a href="javascript:void(0)" routerLink="/obuke/{{obuke[3].id}}">Pročitaj više</a>
+						</figcaption>
+					</figure>
+				</div>
+
+			</div>
+

@@ -1,0 +1,87 @@
+<div *ngIf="vijest" class="container mt-5 mb-5 pt-5" style="min-height: 100vh;">
+  <div class="row mt-5 pt-5">
+    <ol class="breadcrumb hidden-xs-down mb-5 ml-2">
+      <li class="breadcrumb-item"><a routerLink="">Početna</a></li>
+      <li class="breadcrumb-item"><a routerLink="/vijesti">Vijesti</a></li>
+      <li class="breadcrumb-item">{{vijest.naslov}}</li>
+    </ol>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <article>
+        <!-- Post header-->
+        <header class="mb-4">
+            <!-- Post title-->
+            <h1 class="fw-bolder mb-1">{{vijest.naslov}}</h1>
+            <!-- Post meta content-->
+            <div class="text-muted fst-italic mb-2">Objavljeno {{vijest.datum | date}} , {{vijest.objavio}}</div>
+            <!-- Post categories-->
+            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{vijest.vijestKategorija}}</a>
+        </header>
+        <!-- Preview image figure-->
+        <figure class="mb-4"><img class="img-fluid rounded" src="{{vijest.imageUrl}}" alt="..."></figure>
+        <!-- Post content-->
+        <section class="mb-5">
+            <div [innerHTML]="vijest.sadrzaj"></div>
+        </section>
+      </article>
+      <div class="content mt-5 pt-5">
+        <h4 class="mt-5">Slične vijesti</h4>
+          <div class="grid">
+            <!--<figure *ngFor="let slicna of slicneVijesti" class="effect-bubba">
+              <img src="{{slicna.imageUrl}}" alt="{{slicna.naslov}}"/>
+              <figcaption>
+                <h2>{{slicna.naslov}}</h2>
+                <p>{{slicna.podnaslov}}</p>
+              </figcaption>
+            </figure>-->
+            <figure class="effect-bubba">
+              <img class="slika" src="{{slicneVijesti[0].imageUrl}}" alt="{{slicneVijesti[0].naslov}}"/>
+              <figcaption>
+                <h2>{{slicneVijesti[0].naslov}}</h2>
+                <p>{{slicneVijesti[0].podnaslov}}</p>
+                <a href="#">Opširnije</a>
+              </figcaption>
+            </figure>
+            <figure class="effect-bubba">
+              <img class="slika" src="{{slicneVijesti[1].imageUrl}}" alt="{{slicneVijesti[1].naslov}}"/>
+              <figcaption>
+                <h2>{{slicneVijesti[1].naslov}}</h2>
+                <p>{{slicneVijesti[1].podnaslov}}</p>
+                <a href="#">Opširnije</a>
+              </figcaption>
+            </figure>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 offset-lg-1 col-sm-12">
+      <div>
+        <div
+          class="
+            fh5co_heading fh5co_heading_border_bottom
+            pt-3
+            py-2
+            mb-4
+          "
+        >
+          Posljednje Vijesti
+        </div>
+      </div>
+      <div *ngFor="let posljednja of posljednjeVijesti" class="row pb-3">
+        <div class="col-5 align-self-center">
+          <a href="javascript:void(0)" routerLink="/vijesti/{{posljednja.id}}">
+          <img
+            src="{{posljednja.imageUrl}}"
+            alt="img"
+            class="fh5co_most_trading"
+          />
+        </a>
+        </div>
+        <div class="col-7">
+          <a href="javascript:void(0)" routerLink="/vijesti/{{posljednja.id}}">
+            <div class="most_fh5co_treding_font">{{posljednja.naslov}}</div>
+          </a>
+          <div class="most_fh5co_treding_font_123">{{posljednja.datum | date}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

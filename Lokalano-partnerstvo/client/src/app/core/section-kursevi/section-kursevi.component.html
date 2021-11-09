@@ -1,0 +1,259 @@
+<div *ngIf="vijesti" class="container-fluid pt-4 mt-3 paddding">
+  <div class="container paddding">
+    <div class="row mx-0">
+      <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+        <div>
+          <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">
+            VIJESTI
+          </div>
+        </div>
+        <div *ngIf="vijesti[0]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[0].id }}">
+                  <img
+                    src="{{ vijesti[0].imageUrl }}"
+                    alt="{{ vijesti[0].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[0].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[0].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[0].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[0].podnaslov }}</div>
+          </div>
+        </div>
+        <div *ngIf="vijesti[1]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[1].id }}">
+                  <img
+                    src="{{ vijesti[1].imageUrl }}"
+                    alt="{{ vijesti[1].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[1].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[1].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[1].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[1].podnaslov }}</div>
+          </div>
+        </div>
+        <div *ngIf="vijesti[2]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[2].id }}">
+                  <img
+                    src="{{ vijesti[2].imageUrl }}"
+                    alt="{{ vijesti[2].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[2].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[2].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[2].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[2].podnaslov }}</div>
+          </div>
+        </div>
+        <div *ngIf="vijesti[3]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[3].id }}">
+                  <img
+                    src="{{ vijesti[3].imageUrl }}"
+                    alt="{{ vijesti[3].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[3].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[3].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[3].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[3].podnaslov }}</div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6 animate-box"
+        data-animate-effect="fadeInRight"
+        style="padding-top: 5.5%; padding-left: 5%"
+      >
+        <div></div>
+        <div *ngIf="vijesti[4]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[4].id }}">
+                  <img
+                    src="{{ vijesti[4].imageUrl }}"
+                    alt="{{ vijesti[4].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[4].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[4].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[4].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[4].podnaslov }}</div>
+          </div>
+        </div>
+        <div *ngIf="vijesti[5]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[5].id }}">
+                  <img
+                    src="{{ vijesti[5].imageUrl }}"
+                    alt="{{ vijesti[5].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[5].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[5].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[5].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[5].podnaslov }}</div>
+          </div>
+        </div>
+        <div *ngIf="vijesti[6]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[6].id }}">
+                  <img
+                    src="{{ vijesti[6].imageUrl }}"
+                    alt="{{ vijesti[6].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[6].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[6].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[6].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[6].podnaslov }}</div>
+          </div>
+        </div>
+        <div *ngIf="vijesti[7]" class="row pb-4">
+          <div class="col-md-6">
+            <div class="fh5co_hover_news_img">
+                <div class="fh5co_news_img">
+                  <a href="javascript:void(0)" routerLink="/vijesti/{{ vijesti[7].id }}">
+                  <img
+                    src="{{ vijesti[7].imageUrl }}"
+                    alt="{{ vijesti[7].naslov }}"
+                  />
+                  <div class="fh5co_suceefh5co_height_position_absolute"></div>
+                </a>
+                </div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-md-6 animate-box">
+            <a
+              href="javascript:void(0)"
+              routerLink="/vijesti/{{ vijesti[7].id }}"
+              class="fh5co_magna py-2"
+            >
+              {{ vijesti[7].naslov }}
+            </a>
+            <br /><a class="fh5co_mini_time py-3">
+              {{ vijesti[7].datum | date }}
+            </a>
+            <div class="fh5co_consectetur">{{ vijesti[7].podnaslov }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-0">
+        <div class="col-12 text-center pb-4 pt-4">
+          <a href="Javascript:void(0)" routerLink="/vijesti" class="dugme"
+            >Pogledaj sve vijesti</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

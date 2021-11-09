@@ -1,0 +1,94 @@
+<div class="container-fluid mt-5 pt-5">
+  <div class="row pt-5">
+    <div class="row">
+      <div class="col-6">
+        <h1 class="mb-5">
+          Dokumenti
+        </h1>
+      </div>
+      <div class="col-6">
+          <button routerLink="/dashboard/publikacije-create" class="btn btn-outline-primary mt-4 pull-right">Dodaj novi dokument</button>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="form-row">
+        <div class="form-group mb-3">
+          <label for="search"><strong>Pretraga</strong></label>
+          <div class="input-group rounded">
+            <input
+              #search
+              (keyup.enter)="onSearch()"
+              id="search"
+              type="search"
+              class="form-control rounded"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <button [disabled]="search.value === ''" (click)="onSearch()" type="button" class="btn btn-primary">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <button (click)="onReset()" type="button" class="btn btn-primary">
+          Poništi filtere
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-8 pt-4" *ngIf="totalCount === 0">
+      Nema rezultata za odabrane filtere
+    </div>
+    <div class="col-lg-6 pt-4" *ngIf="publikacije">
+      <accordion [isAnimated]="true">
+        <accordion-group *ngFor="let publikacija of publikacije">
+          <button
+            class="
+              btn btn-block
+              justify-content-between
+              d-flex
+              w-100
+              shadow-none
+            "
+            accordion-heading
+            type="button">
+            <div class="pull-left float-left">
+              <strong>{{ publikacija.naziv }}</strong>
+            </div>
+          </button>
+          <div class="card pt-2 pb-2">
+            <div class="card-body">
+              <a (click)="onDelete(publikacija.id)" class="mr-2 btn pull-right"
+                ><i class="fa fa-2x fa-trash"></i
+              ></a>
+              <a routerLink="/dashboard/publikacije-edit/{{publikacija.id}}" class="mr-2 btn pull-right"
+                ><i class="fa fa-2x fa-wrench"></i
+              ></a>
+              <span class="form-group">
+              <p class="card-title">
+                <b>Autor: </b>{{ publikacija.autor}}
+              </p>
+              <p class="card-title">
+                <b>Datum objave: </b>{{ publikacija.datumObjavljivanja | date }}
+              </p>
+              <ng-container *ngIf="(isAdmin$ | async)">
+                <p class="card-title">
+                  <b>Objavio: </b>{{ publikacija.objavio }}
+                </p>
+              </ng-container>
+              <p class="card-title"><b>Detalji:</b> <span [innerHTML]="publikacija.opis"></span> </p>
+              </span>
+              <div class="row">
+                <div class="col-6">
+                  <b>Naziv fajla: </b><a href="{{publikacija.path}}">{{publikacija.fileName}}</a>
+                </div>
+                <div class="col-6">
+                  <a href="{{publikacija.path}}"><img height="300px" width="180px" src="{{publikacija.photoPath}}" alt="{{ publikacija.naziv }}"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+</div>

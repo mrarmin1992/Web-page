@@ -1,0 +1,22 @@
+<div class="form-label-group">
+  <textarea
+      [ngClass]="(controlDir?.control?.touched)
+          ? !controlDir.control.valid ? 'is-invalid' : 'is-valid' : null"
+      (input)="onChange($event.target.value)"
+      (blur)="onTouched()"
+      rows="6"
+      #input
+      class="form-control"
+      placeholder="{{label}}"
+  ></textarea>
+
+  <div class="invalid-feedback" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.touched)">
+      <span *ngIf="controlDir.control.errors?.required">{{label}} je obazeno polje</span>
+      <span *ngIf="controlDir.control.errors?.pattern">Netačna email adresa</span>
+
+  </div>
+
+  <div class="invalid-feedback d-block" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.dirty)" >
+      <span *ngIf="controlDir.control.errors?.emailExists">Email adresa se već koristi</span>
+  </div>
+</div>

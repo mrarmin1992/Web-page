@@ -1,0 +1,86 @@
+<div
+  class="d-flex justify-content-center mt-5 pt-5 mb-5 pb-5"
+  style="min-height: 70vh"
+>
+  <div class="col-3">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <img
+        class="mb-5 mt-5"
+        style="margin-left: 40%"
+        src="/assets/Slike/login.png"
+        width="92"
+        height="77"
+      />
+      <div class="form-floating">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          placeholder="Email address"
+        />
+        <!--<app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>-->
+        <label for="inputEmail">Email address</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            loginForm.get('email').invalid &&
+            loginForm.get('email').touched &&
+            loginForm.get('email').errors['required']
+          "
+        >
+          Email Aaddress is required
+        </span>
+        <span
+          class="text-danger"
+          *ngIf="
+            loginForm.get('email').invalid &&
+            loginForm.get('email').touched &&
+            loginForm.get('email').errors['pattern']
+          "
+        >
+          Email Aaddress is required
+        </span>
+        <p></p>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          placeholder="Password"
+        />
+        <!--<app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>-->
+        <label for="inputPassword">Password</label>
+        <span
+          class="text-danger"
+          *ngIf="
+            loginForm.get('password').invalid &&
+            loginForm.get('password').touched &&
+            loginForm.get('password').errors['required']
+          "
+        >
+          Password is required
+        </span>
+      </div>
+      <hr />
+
+      <p style="text-decoration: solid">
+        <a routerLink="/account/forgotpassword" href="#"
+          >Zaboravljena lozinka</a
+        >
+      </p>
+      <button
+        [disabled]="loginForm.invalid"
+        class="w-100 btn btn-success mb-3"
+        type="submit"
+      >
+        Sign in
+      </button>
+      <div *ngIf="showError" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</div>

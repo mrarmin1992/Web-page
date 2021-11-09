@@ -1,0 +1,222 @@
+<div class="mt-5 pt-5">
+  <button routerLink="/dashboard/publikacije-dashboard" style="background-color:transparent;" class="btn btn-light"><i class="fa fa-lg fa-arrow-left text-secondary"></i></button>
+</div>
+<div *ngIf="publikacija" class="container pt-5 mt-5" style="margin-bottom: 100px;">
+  <div class="row pt-5">
+    <h1 class="mb-5">{{title}}</h1>
+    <div class="col-lg-12">
+      <form
+        #obukaForm="ngForm"
+        (ngSubmit)="onSubmit(obukaForm.valid && obukaForm.value)"
+      >
+        <div class="col-lg-6">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="naziv">Naziv</label>
+              <input
+                [ngClass]="{
+                  'is-invalid':
+                    naziv.invalid && (naziv.dirty || naziv.touched)
+                }"
+                required
+                type="text"
+                class="form-control"
+                id="naziv"
+                placeholder="Naziv"
+                name="naziv"
+                #naziv="ngModel"
+                [(ngModel)]="publikacija.naziv"
+              />
+              <div
+                *ngIf="naziv.invalid && (naziv.dirty || naziv.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="naziv.errors.required">
+                  Naziv dokumenta je obavezan
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="autor">Autor</label>
+              <input
+                [ngClass]="{
+                  'is-invalid':
+                  autor.invalid && (autor.dirty || autor.touched)
+                }"
+                required
+                type="text"
+                class="form-control"
+                id="autor"
+                placeholder="Autor"
+                name="autor"
+                #autor="ngModel"
+                [(ngModel)]="publikacija.autor"
+              />
+              <div
+                *ngIf="autor.invalid && (autor.dirty || autor.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="autor.errors.required">
+                  Autor dokumenta je obavezan
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="datumObjavljivanja">Datum objave</label>
+              <input
+                [ngClass]="{
+                  'is-invalid':
+                  datumObjavljivanja.invalid &&
+                    (datumObjavljivanja.dirty || datumObjavljivanja.touched)
+                }"
+                required
+                type="date"
+                class="form-control"
+                id="datumObjavljivanja"
+                name="datumObjavljivanja"
+                #datumObjavljivanja="ngModel"
+                [(ngModel)]="publikacija.datumObjavljivanja"
+              />
+              <div
+                *ngIf="
+                datumObjavljivanja.invalid &&
+                  (datumObjavljivanja.dirty || datumObjavljivanja.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="datumObjavljivanja.errors.required">
+                  Datum objave dokumenta je obavezan
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row mb-2">
+            <div class="form-group">
+              <label for="opis">Opis</label>
+              <ejs-richtexteditor
+                id="iframeRTE"
+                [toolbarSettings]="tools"
+                [iframeSettings]="iframe"
+
+                required
+                #opis="ngModel"
+                id="opis"
+                [(ngModel)]="publikacija.opis"
+                name="opis"
+              >
+                <ng-template #valueTemplate>
+                  <p></p>
+                </ng-template>
+              </ejs-richtexteditor>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2" *ngIf="publikacija.fileName !== null">
+          <label>Fajl</label>
+          <div class="col-3">
+            <div class="card">
+              <p class="card-title"><b>Download: </b><a href="{{publikacija.path}}">{{publikacija.fileName}}</a></p>
+              <div class="btn-group" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+        <ng-container>
+          <div class="progress form-group" *ngIf="progress > 0">
+            <div
+              class="progress-bar progress-bar-striped bg-success"
+              role="progressbar"
+              [style.width.%]="progress"
+            >
+              {{ progress }}%
+            </div>
+          </div>
+          <div class="d-flex justify-content-between my-3">
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <h5>Odaberi dokument</h5>
+              <div
+                class="custom-dropzone"
+                ngx-dropzone
+                (change)="onFileSelect($event)"
+              >
+                <ngx-dropzone-label>
+                  <i class="fa fa-upload fa-4x"></i>
+                  <h4>Prevuci dokument ovdje</h4>
+                </ngx-dropzone-label>
+              </div>
+            </div>
+            <div class="col-4" *ngIf="files[files.length-1]">
+              <h5>Odabrani fajl</h5>
+              <span class="file-input"> {{files[files.length-1].name}}</span>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="row my-2" *ngIf="publikacija.photoPath !== ''">
+          <label>Prva strana</label>
+          <div class="col-3">
+            <div class="card">
+              <img class="card-img-top" width="100%" height="300" src="{{publikacija.photoPath}}"/>
+              <div class="btn-group" style="width: 100%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-container>
+          <div class="progress form-group" *ngIf="progress > 0">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+              {{progress}}%
+            </div>
+          </div>
+          <div class="d-flex justify-content-between my-3">
+            <h3>Dodaj sliku prve strane</h3>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <h3>Korak 1 - Odaberi sliku</h3>
+              <div class="custom-dropzone" ngx-dropzone (change)="onPhotoSelect($event)">
+                <ngx-dropzone-label>
+                  <i class="fa fa-upload fa-4x"></i>
+                  <h4>Prevuci sliku ovdje</h4>
+                </ngx-dropzone-label>
+              </div>
+            </div>
+            <div class="col-4 img-preview" *ngIf="photos[0]">
+              <h3>Korak 2 - Izmjeni veličinu slike</h3>
+              <image-cropper
+    class="img-fluid"
+    [imageChangedEvent]="imageChangedEvent"
+    [imageFile]="photos[0]"
+    [maintainAspectRatio]="false"
+    [aspectRatio]="1"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+  ></image-cropper>
+            </div>
+            <div class="col-4" *ngIf="photos[0]">
+              <h3>Korak 3 - Pregled Slike</h3>
+              <ng-container *ngIf="croppedImage">
+                <img [src]="croppedImage" class="img-fluid">
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+        <button
+          [disabled]="!obukaForm.valid"
+          type="submit"
+          class="btn btn-primary my-3 float-right"
+        >
+          Spremi
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

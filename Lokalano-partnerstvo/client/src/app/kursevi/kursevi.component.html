@@ -1,0 +1,275 @@
+<div class="vijestiBanner">
+  <p class="vijest naslovBaner">KURSEVI/OBUKE</p>
+  <p class="opisvijesti">TRAINING CORNER</p>
+
+</div>
+<div class="container-fluid pb-4 pt-4">
+  <div style="margin-left: 15%; margin-right: 10%">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <ol class="breadcrumb hidden-xs-down mb-5 ml-2">
+            <li class="breadcrumb-item"><a routerLink="">Početna</a></li>
+            <li class="breadcrumb-item">Kursevi i obuke</li>
+          </ol>
+          <div class="col-md-8 animate-box">
+            <div class="row">
+              <div>
+                <div
+                  class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"
+                >
+                  Kursevi
+                </div>
+              </div>
+              <div *ngIf="kursTotalCount == 0" class="col-lg-8">
+                Nije pronađen niti jedan kurs za odabrani kriterij.
+              </div>
+              <div *ngFor="let kurs of kursevi" class="col-md-3">
+                <div *ngIf="kursTotalCount > 0" class="card-sl">
+                  <a
+                    routerLink="/kursevi/{{ kurs.id }}"
+                    href="javascript:void(0)"
+                  >
+                    <div class="card-image">
+                      <img src="{{ kurs.imageUrl }}" alt="{{ kurs.naziv }}" />
+                    </div>
+                  </a>
+                  <a
+                    routerLink="/kursevi/{{ kurs.id }}"
+                    href="javascript:void(0)"
+                  >
+                    <div class="card-heading" style="height: 90px; max-height: 90px;">
+                      {{ kurs.naziv }}
+                    </div>
+                  </a>
+                  <div class="card-text" style="height: 125px; max-height: 125px;">
+                    {{kurs.kratakOpis}}
+                  </div>
+                  <div class="card-text">
+                    <p>
+                      <strong> Početak : </strong>
+                      {{ kurs.datumPocetka | date }}
+                    </p>
+                    <p>
+                      <strong> Broj polaznika : </strong>
+                      {{ kurs.brojPolaznika }}
+                    </p>
+                    <p *ngIf="kurs.cijena == 0">
+                      <strong>Cijena :</strong> Besplatno
+                    </p>
+                    <p *ngIf="kurs.cijena != 0">
+                      <strong>Cijena :</strong>
+                      {{ kurs.cijena }} KM
+                    </p>
+                  </div>
+                  <button
+                    *ngIf="kurs.aktivan"
+                    type="button"
+                    routerLink="/prijava-kurs/{{ kurs.id }}"
+                    class="card-button"
+                  >
+                    Prijavi se
+                  </button>
+                </div>
+              </div>
+              <div
+                class="d-flex justify-content-center mt-5"
+                *ngIf="kursTotalCount && kursTotalCount > 4"
+              >
+                <app-pager
+                  [pageSize]="this.kursParams.pageSize"
+                  [totalCount]="kursTotalCount"
+                  (pageChanged)="onPageChanged($event)"
+                ></app-pager>
+              </div>
+            </div>
+            <div class="row mt-5 mb-5">
+              <div>
+                <div
+                  class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"
+                >
+                  Obuke
+                </div>
+              </div>
+              <div *ngIf="obukaTotalCount == 0" class="col-lg-8">
+                Nije pronađena niti jedna obuka za odabrani kriterij.
+              </div>
+                <div *ngFor="let obuka of obuke" class="col-md-3">
+                  <div *ngIf="obukaTotalCount > 0" class="card-sl">
+                    <a
+                      routerLink="/obuke/{{ obuka.id }}"
+                      href="javascript:void(0)"
+                    >
+                      <div class="card-image">
+                        <img src="{{ obuka.imageUrl }}" alt="{{ obuka.naziv }}" />
+                      </div>
+                    </a>
+                    <a
+                      routerLink="/obuke/{{ obuka.id }}"
+                      href="javascript:void(0)"
+                    >
+                      <div class="card-heading" style="height: 90px; max-height: 90px;">
+                        {{ obuka.naziv }}
+                      </div>
+                    </a>
+                    <div class="card-text" style="height: 125px; max-height: 125px;">
+                      {{obuka.kratakOpis}}
+                    </div>
+                    <div class="card-text">
+                      <p>
+                        <strong> Početak : </strong>
+                        {{ obuka.datumPocetka | date }}
+                      </p>
+                      <p>
+                        <strong> Broj polaznika : </strong>
+                        {{ obuka.brojPolaznika }}
+                      </p>
+                      <p *ngIf="obuka.cijena == 0">
+                        <strong>Cijena :</strong> Besplatno
+                      </p>
+                      <p *ngIf="obuka.cijena != 0">
+                        <strong>Cijena :</strong>
+                        {{ obuka.cijena }} KM
+                      </p>
+                    </div>
+                    <button
+                      *ngIf="obuka.aktivan"
+                      type="button"
+                      routerLink="/prijava-obuka/{{ obuka.id }}"
+                      class="card-button"
+                    >
+                      Prijavi se
+                    </button>
+                  </div>
+                </div>
+
+              <div
+                class="d-flex justify-content-center mt-5"
+                *ngIf="obukaTotalCount && obukaTotalCount > 4"
+              >
+                <app-pager
+                  [pageSize]="this.kursParams.pageSize"
+                  [totalCount]="obukaTotalCount"
+                  (pageChanged)="onPageChanged($event)"
+                ></app-pager>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 offset-md-1 animate-box ml-5">
+            <div>
+              <div
+                class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"
+              >
+                PRETRAGA
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form mb-5 card-sl" *ngIf="kursevi">
+              <i
+                (click)="onSearch()"
+                style="cursor: pointer"
+                class="fa fa-search"
+              ></i>
+              <input
+                (keyup.enter)="onSearch()"
+                #search
+                type="text"
+                class="form-control form-input"
+                placeholder="Pretraga"
+              />
+              <span
+                (click)="onReset()"
+                style="cursor: pointer"
+                class="left-pan"
+                ><i class="fa fa-trash"></i
+              ></span>
+            </div>
+            <div>
+              <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">PARTNERI</div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="fh5co_tags_all mb-5">
+            <a (click)="onPartnerSelected(null)" href="javascript:void(0);" class="fh5co_tagg card-sl">Svi</a>
+              <a *ngFor="let partner of partneri" (click)="onPartnerSelected(partner.ime)" href="javascript:void(0);" class="fh5co_tagg card-sl">{{partner.ime}}</a>
+          </div>
+            <div>
+              <div
+                class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"
+              >
+                KATEGORIJE
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="fh5co_tags_all mb-5">
+              <a
+                *ngFor="let kategorija of kategorije"
+                (click)="onKategorijaSelected(kategorija.id)"
+                href="javascript:void(0);"
+                class="fh5co_tagg card-sl"
+                >{{ kategorija.naziv }}</a
+              >
+            </div>
+            <div>
+              <div
+                class="
+                  fh5co_heading fh5co_heading_border_bottom
+                  pt-3
+                  py-2
+                  mb-4
+                "
+              >
+                POSLJEDNJE VIJESTI
+              </div>
+            </div>
+            <div *ngFor="let vijest of vijesti" class="row pb-3">
+              <div class="col-5 align-self-center">
+                <a routerLink="/vijesti/{{vijest.id}}">
+                <img
+                  src="{{vijest.imageUrl}}"
+                  alt="{{vijest.naslov}}"
+                  class="fh5co_most_trading"
+                />
+              </a>
+              </div>
+              <div class="col-7">
+                <a routerLink="/vijesti/{{vijest.id}}">
+                <div class="most_fh5co_treding_font">{{vijest.naslov}}</div>
+                <div class="most_fh5co_treding_font_123">{{vijest.datum | date}}</div>
+              </a>
+              </div>
+            </div>
+            <div>
+              <div
+                class="
+                  fh5co_heading fh5co_heading_border_bottom
+                  pt-3
+                  py-2
+                  mb-4
+                "
+              >
+                POSLJEDNJI DOGAĐAJI
+              </div>
+            </div>
+            <div *ngFor="let dogadjaj of dogadjaji" class="row pb-3">
+              <div class="col-5 align-self-center">
+                <a routerLink="/dogadjaji/{{dogadjaj.id}}">
+                <img
+                  src="{{dogadjaj.imageUrl}}"
+                  alt="{{dogadjaj.naziv}}"
+                  class="fh5co_most_trading"
+                />
+              </a>
+              </div>
+              <div class="col-7">
+                <a routerLink="/dogadjaji/{{dogadjaj.id}}">
+                <div class="most_fh5co_treding_font">{{dogadjaj.naziv}}</div>
+                <div class="most_fh5co_treding_font_123">{{dogadjaj.datumPocetka | date}}</div>
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

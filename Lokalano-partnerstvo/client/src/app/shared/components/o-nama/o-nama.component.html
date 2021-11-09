@@ -1,0 +1,23 @@
+<div id="container" style="height: 90vh; margin-top:5%;">
+  
+  <div *ngFor="let partner of partneri;let i = index" class="mx-5">
+    <div *ngIf="i % 2 === 0" class="" style="width: 400px; height: 550px; background-color: #dbdedfec; margin-top: 45%; padding: 10% 5%; border-radius: 2%;"> 
+      <div class="slikapartner"><img class="mx-auto rounded-circle" src="{{partner.imageUrl}}" alt=""></div>
+      <h5 class="card-title">{{partner.ime}}</h5>
+      <p class="card-text">{{partner.opis}}</p>
+      <a routerLink="/partner/{{partner.mail}}" class="btn btn-primary">Saznaj više</a>
+      
+    </div>
+    <div *ngIf="i % 2 !== 0" class="" style="width: 400px; height: 550px; background-color: #999090ea; margin-top:20%; padding: 10% 5%; border-radius: 2%;"> 
+      <div class="slikapartner"><img class="mx-auto rounded-circle" src="{{partner.imageUrl}}" alt=""></div>
+      <h5 class="card-title">{{partner.ime}}</h5>
+      <p class="card-text">{{partner.opis}}</p>
+      <a routerLink="/partner/{{partner.mail}}" class="btn btn-primary">Saznaj više</a>
+    </div>
+  
+    
+
+  </div>
+  
+</div>
+ 

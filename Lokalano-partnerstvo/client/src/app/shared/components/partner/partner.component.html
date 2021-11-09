@@ -1,0 +1,191 @@
+
+<div class="container" style="min-height: 100vh;">
+  <div class="publikacijeBanner">
+  </div>
+  <div style= "height: 100px;" class="prvibox">
+  <div class="slikapartner"><img class="mx-auto slikaPartner rounded-circle" src="{{partner.imageUrl}}" alt=""></div>
+  <div class="naslovpartner">
+    <h2 *ngIf="partner" class="mt-4" style="color: #ed563b;">{{partner.ime}}</h2>
+  </div>
+</div>
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-12">
+  <div class="prvakolona">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-6">
+      <i class="fa fa-phone"></i></div>
+    <div class="col-lg-10" style="padding-left: 10%;"><p *ngIf="partner">{{partner.telefon}}</p></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-26">
+      <i class="fa fa-envelope-o"></i>
+    </div>
+    <div class="col-lg-10 col-md-10 col-sm-10" style="padding-left:10%"><p *ngIf="partner">{{partner.mail}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <i class="fa fa-map-marker"></i></div>
+    <div class="col-lg-10" style="padding-left: 10%;"><p *ngIf="partner">{{partner.adresa}}</p></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <i class="fa fa-globe"></i></div>
+    <div class="col-lg-10" style="padding-left: 10%;"><a *ngIf="partner.web" href="https://{{partner.web}}" target="_blank">{{partner.web}}</a></div>
+  </div>
+  <div class="d-flex align-items mt-4">
+    <a *ngIf="partner.facebook" href="{{partner.facebook}}" target="_blank"><i class="fa fa-facebook" style="color: #1877f2;"></i></a>
+    <a *ngIf="partner.instagram" href="{{partner.instagram}}" target="_blank"><i class="fa fa-instagram" style="color: #c32aa3;"></i></a>
+    <a *ngIf="partner.twitter" href="{{partner.twitter}}" target="_blank"><i class="fa fa-twitter" style="color: #1da1f2;"></i></a>
+  </div>
+  </div>
+</div>
+<div class="col-lg-8 col-md-8 col-sm-12">
+  <div class="onama">
+    <h3 style="padding:2% 0; font-weight: 300; font-size: 20px;">O nama</h3>
+    <div><p *ngIf="partner">{{partner.opis}}</p></div>
+  </div>
+</div>
+</div>
+<div *ngIf="brojVijesti > 0" class="row mt-3 ">
+  <h2>Vijesti</h2>
+  <div *ngFor="let vijest of vijesti" class="col-lg-3 mb-3">
+    <div class="card-sl">
+      <a
+        routerLink="/vijesti/{{ vijest.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-image">
+          <img class="slikaVijest" src="{{ vijest.imageUrl }}" alt="{{ vijest.naslov }}" />
+        </div>
+      </a>
+      <a
+        routerLink="/vijesti/{{ vijest.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-heading" style="height: 90px; max-height: 90px;">
+          {{ vijest.naslov }}
+        </div>
+      </a>
+      <div class="card-text" style="height: 125px; max-height: 125px;">
+        {{vijest.podnaslov}}
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="brojVijesti && brojVijesti > 4">
+    <app-pager [pageSize]="this.vijestiParams.pageSize"
+               [totalCount]="brojVijesti"
+               (pageChanged)="onVijestiPageChanged($event)"
+    ></app-pager>
+  </div>
+  <hr>
+</div>
+<div *ngIf="brojKurseva > 0" class="row mt-3 ">
+  <h2>Kursevi</h2>
+  <div *ngFor="let kurs of kursevi" class="col-lg-3 mb-3">
+    <div class="card-sl">
+      <a
+        routerLink="/kursevi/{{ kurs.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-image">
+          <img class="slikaVijest" src="{{ kurs.imageUrl }}" alt="{{ vijest.naziv }}" />
+        </div>
+      </a>
+      <a
+        routerLink="/kursevi/{{ kurs.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-heading" style="height: 90px; max-height: 90px;">
+          {{ kurs.naziv }}
+        </div>
+      </a>
+      <div class="card-text" style="height: 125px; max-height: 125px;">
+        {{kurs.kratakOpis}}
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="brojKurseva && brojKurseva > 4">
+    <app-pager [pageSize]="this.kursParams.pageSize"
+               [totalCount]="brojKurseva"
+               (pageChanged)="onKursPageChanged($event)"
+    ></app-pager>
+  </div>
+  <hr>
+</div>
+<div *ngIf="brojObuka > 0" class="row mt-3 ">
+  <h2>Obuke</h2>
+  <div *ngFor="let obuka of obuke" class="col-lg-3 mb-3">
+    <div class="card-sl">
+      <a
+        routerLink="/obuke/{{ obuka.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-image">
+          <img class="slikaVijest" src="{{ obuka.imageUrl }}" alt="{{ obuka.naziv }}" />
+        </div>
+      </a>
+      <a
+        routerLink="/obuke/{{ obuka.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-heading" style="height: 90px; max-height: 90px;">
+          {{ obuka.naziv }}
+        </div>
+      </a>
+      <div class="card-text" style="height: 125px; max-height: 125px;">
+        {{obuka.kratakOpis}}
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="brojObuka && brojObuka > 4">
+    <app-pager [pageSize]="this.obukeParams.pageSize"
+               [totalCount]="brojObuka"
+               (pageChanged)="onObukaPageChanged($event)"
+    ></app-pager>
+  </div>
+  <hr>
+</div>
+<div *ngIf="brojDogadjaja > 0" class="row mt-3 ">
+  <h2>Događaji</h2>
+  <div *ngFor="let dogadjaj of dogadjaji" class="col-lg-3 mb-3">
+    <div class="card-sl">
+      <a
+        routerLink="/dogadjaji/{{ dogadjaj.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-image">
+          <img class="slikaVijest" src="{{ dogadjaj.imageUrl }}" alt="{{ dogadjaj.naziv }}" />
+        </div>
+      </a>
+      <a
+        routerLink="/dogadjaji/{{ dogadjaj.id }}"
+        href="javascript:void(0)"
+      >
+        <div class="card-heading" style="height: 90px; max-height: 90px;">
+          {{ dogadjaj.naziv }}
+        </div>
+      </a>
+      <div class="card-text" style="height: 125px; max-height: 125px;">
+        {{dogadjaj.kratakOpis}}
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="brojDogadjaja && brojDogadjaja > 4">
+    <app-pager [pageSize]="this.dogadjajiParams.pageSize"
+               [totalCount]="brojDogadjaja"
+               (pageChanged)="onDogadjajPageChanged($event)"
+    ></app-pager>
+  </div>
+  <hr>
+</div>
+</div>
+
+
+
+
+
+
+
+
+

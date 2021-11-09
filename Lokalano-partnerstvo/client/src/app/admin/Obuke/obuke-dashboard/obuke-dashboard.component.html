@@ -1,0 +1,102 @@
+<div class="mt-5 pt-5">
+    <div class="row pt-5">
+      <h1 class="mb-5">
+        Obuke
+      </h1>
+      <section class="col-2">
+        <ng-container *ngIf="kategorije">
+        <h5 class="text-warning ml-3">Sortiraj</h5>
+        <select
+          class="form-select my-3"
+          aria-label="Default select example"
+          (change)="onSortSelected($event.target.value)"
+        >
+          <option *ngFor="let sort of sortOptions" [value]="sort.value">
+            {{ sort.name }}
+          </option>
+        </select>
+
+        <h5 class="text-warning ml-3">Kategorije</h5>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let kategorija of kategorije"
+            [class.active]="kategorija.id === this.obukaParams.kategorijaId"
+            [value]="kategorija.id"
+            (click)="onKategorijaSelected(kategorija.id)"
+          >
+            {{ kategorija.naziv }}
+          </li>
+        </ul>
+      </ng-container>
+      </section>
+      <section class="col-10">
+        <div class="d-flex justify-content-between align-items-center pb-2">
+
+          <app-paging-header [totalCount]="totalCount" [pageSize]="this.obukaParams.pageSize" [pageNumber]="this.obukaParams.pageNumber">
+          </app-paging-header>
+
+          <!--<div class="form-inline" *ngIf="obuke">
+            <input (keyup.enter)="onSearch()" type="text" class="form-control mr-2" #search placeholder="Pretraga">
+            <button (click)="onSearch()" class="btn btn-outline-primary my-2">Pretraži</button>
+            <button (click)="onReset()" class="btn btn-outline-success ml-2 my-2">Poništi filtere</button>
+        </div>-->
+        <div class="form" *ngIf="obuke"> <i (click)="onSearch()" style="cursor: pointer;" class="fa fa-search"></i> <input (keyup.enter)="onSearch()" #search type="text" class="form-control form-input" placeholder="Pretraga"> <span (click)="onReset()" style="cursor: pointer;" class="left-pan"><i class="fa fa-trash"></i></span>
+        </div>
+          <button routerLink="/dashboard/obuka-create" class="btn btn-outline-success">Dodaj novu obuku</button>
+        </div>
+        <div *ngIf="totalCount> 0" class="row">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">
+                  <div class="p-2 text-uppercase">Obuka</div>
+                </th>
+                <th scope="col">
+                  <div class="py-2 text-uppercase">Naziv</div>
+                </th>
+                <th scope="col">
+                  <div class="p-2 px-3 text-uppercase">Datum Početka</div>
+                </th>
+                <ng-container *ngIf="(isAdmin$ | async)">
+                  <th scope="col">
+                    <div class="p-2 px-3 text-uppercase">Objavio</div>
+                  </th>
+                </ng-container>
+                <th scope="col">
+                  <div class="p-2 px-3 text-uppercase">Izmjeni</div>
+                </th>
+                <th scope="col">
+                  <div class="p-2 px-3 text-uppercase">Briši</div>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let obuka of obuke">
+                <td>
+                  <div class="p-2">
+                    <img src="{{obuka.imageUrl || '/assets/Slike/placeholder.png'}}" alt="{{obuka.naziv}}" class="img-fluid" style="max-height: 50px">
+                  </div>
+                </td>
+                <th class="align-middle"><a routerLink="/obuke/{{obuka.id}}"><h5>{{obuka.naziv}}</h5></a></th>
+                <td class="align-middle">{{obuka.datumPocetka | date}}</td>
+                <ng-container *ngIf="(isAdmin$ | async)">
+                  <td class="align-middle">
+                    {{obuka.objavio}}
+                  </td>
+                </ng-container>
+                <td class="align-middle"><button routerLink="/dashboard/obuka-edit/{{obuka.id}}" class="btn btn-warning">Izmjeni</button></td>
+                <td class="align-middle"><button (click)="deleteObuka(obuka.id)" class="btn btn-danger">Obriši</button></td>
+              </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > 0">
+          <app-pager [pageSize]="this.obukaParams.pageSize"
+                     [totalCount]="totalCount"
+                     (pageChanged)="onPageChanged($event)"
+          ></app-pager>
+        </div>
+    </div>
+

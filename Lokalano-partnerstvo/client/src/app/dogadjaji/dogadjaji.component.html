@@ -1,0 +1,121 @@
+<div class="vijestiBanner">
+  <p class="vijest naslovBaner">DOGAĐAJI</p>
+  <p class="opisdogadjaj">EVENTS CORNER</p>
+</div>
+<div class="container-fluid pb-4 pt-4">
+  <div style="margin-left: 15%; margin-right: 10%;">
+      <div class="row">
+        <ol class="breadcrumb hidden-xs-down mb-5 ml-2">
+          <li class="breadcrumb-item"><a routerLink="">Početna</a></li>
+          <li class="breadcrumb-item">Događaji</li>
+        </ol>
+          <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">DOGAĐAJI</div>
+              </div>
+              <div class="row">
+                <div *ngIf="totalCount == 0" class="col-lg-8">
+                  Nije pronađen niti jedan događaj za odabrani kriterij.
+                </div>
+                <div *ngFor="let dogadjaj of dogadjaji" class="col-md-3">
+                  <div *ngIf="totalCount > 0" class="card-sl">
+                    <a
+                      routerLink="/dogadjaji/{{ dogadjaj.id }}"
+                      href="javascript:void(0)"
+                    >
+                      <div class="card-image">
+                        <img src="{{ dogadjaj.imageUrl }}" alt="{{ dogadjaj.naziv }}" />
+                      </div>
+                    </a>
+                    <a
+                      routerLink="/dogadjaji/{{ dogadjaj.id }}"
+                      href="javascript:void(0)"
+                    >
+                      <div class="card-heading" style="height: 90px; max-height: 90px;">
+                        {{ dogadjaj.naziv }}
+                      </div>
+                    </a>
+                    <div class="card-text">
+                      <p>
+                        <strong> Početak : </strong>
+                        {{ dogadjaj.datumPocetka | date }}
+                      </p>
+                      <p>
+                        <strong> Vrijeme : </strong>
+                        {{ dogadjaj.vrijemePocetka }} h
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+          <div class="col-md-3 animate-box">
+            <div>
+              <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">PRETRAGA</div>
+          </div>
+          <div class="clearfix"></div>
+            <div class="form mb-5 card-sl" *ngIf="dogadjaji"> <i (click)="onSearch()" style="cursor: pointer;" class="fa fa-search"></i> <input (keyup.enter)="onSearch()" #search type="text" class="form-control form-input" placeholder="Pretraga"> <span (click)="onReset()" style="cursor: pointer;" class="left-pan"><i class="fa fa-trash"></i></span>
+            </div>
+            <div>
+              <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">PARTNERI</div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="fh5co_tags_all mb-5">
+            <a (click)="onPartnerSelected(null)" href="javascript:void(0);" class="fh5co_tagg card-sl">Svi</a>
+              <a *ngFor="let partner of partneri" (click)="onPartnerSelected(partner.ime)" href="javascript:void(0);" class="fh5co_tagg card-sl">{{partner.ime}}</a>
+          </div>
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">KATEGORIJE</div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="fh5co_tags_all mb-5">
+                  <a *ngFor="let kategorija of kategorije" (click)="onKategorijaSelected(kategorija.id)" href="javascript:void(0);" class="fh5co_tagg card-sl">{{kategorija.naziv}}</a>
+              </div>
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">POSLJEDNJE VIJESTI</div>
+              </div>
+              <div *ngFor="let vijest of vijesti" class="row pb-3">
+                <div class="col-5 align-self-center">
+                  <a routerLink="/vijesti/{{vijest.id}}">
+                  <img
+                    src="{{vijest.imageUrl}}"
+                    alt="{{vijest.naslov}}"
+                    class="fh5co_most_trading"
+                  />
+                </a>
+                </div>
+                <div class="col-7">
+                  <a routerLink="/vijesti/{{vijest.id}}">
+                  <div class="most_fh5co_treding_font">{{vijest.naslov}}</div>
+                  <div class="most_fh5co_treding_font_123">{{vijest.datum | date}}</div>
+                </a>
+                </div>
+              </div>
+              <div class="mt-5">
+                  <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">POSLJEDNJI KURSEVI</div>
+              </div>
+              <div *ngFor="let kurs of kursevi" class="row pb-3">
+                <div class="col-5 align-self-center">
+                  <a href="javascript:void(0)" routerLink="/kursevi/{{kurs.id}}">
+                    <img src="{{kurs.imageUrl}}" alt="{{kurs.naziv}}" class="fh5co_most_trading"/>
+                  </a>
+                </div>
+                <div class="col-7">
+                  <a href="javascript:void(0)" routerLink="/kursevi/{{kurs.id}}">
+                    <div class="most_fh5co_treding_font">{{kurs.naziv}}</div>
+                    <div class="most_fh5co_treding_font_123">{{kurs.datumPocetka | date}}</div>
+                  </a>
+                </div>
+            </div>
+          </div>
+
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > 0">
+        <app-pager [pageSize]="this.dogadjajiParams.pageSize"
+                   [totalCount]="totalCount"
+                   (pageChanged)="onPageChanged($event)"
+        ></app-pager>
+      </div>
+  </div>
+</div>

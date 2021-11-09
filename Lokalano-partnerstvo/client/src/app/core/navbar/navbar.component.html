@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg fixed-top py-3">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active mr-5">
+          <a class="nav-link text-uppercase font-weight-bold" routerLink="/"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-uppercase font-weight-bold"
+            routerLink="/vijesti"
+            >Vijesti</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-uppercase font-weight-bold"
+            routerLink="/kursevi"
+            >Kursevi i Obuke</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-uppercase font-weight-bold"
+            routerLink="/dogadjaji"
+            >Događaji</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-uppercase font-weight-bold"
+            routerLink="/publikacije"
+            >Publikacije</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-uppercase font-weight-bold"
+            routerLink="/about-us"
+            >Partneri</a
+          >
+        </li>
+        <ng-container *ngIf="(currentUser$ | async) === null">
+          <li class="nav-item">
+            <a
+              class="nav-link text-uppercase font-weight-bold"
+              href="javascript:void(0);"
+              routerLink="/account/login"
+              >Login</a
+            >
+          </li>
+        </ng-container>
+        <ng-container *ngIf="currentUser$ | async">
+          <li class="nav-item">
+            <a
+              class="nav-link text-uppercase font-weight-bold"
+              routerLink="/dashboard"
+              >Dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <div href="javascript:void(1);">
+              <div class="dropdown ml-3 mr-5" dropdown>
+                <a
+                  class="dropdown-toogle nav-link"
+                  style="cursor: pointer;"
+                  dropdownToggle
+                >
+                    Welcome {{ (currentUser$ | async).displayName }}
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  style="cursor: pointer;"
+                  *dropdownMenu
+                >
+                  <a
+                    (click)="logout()"
+                    class="dropdown-item d-flex align-items-center py-2"
+                  >
+                    <i class="fa fa-sign-out mr-3"></i>Logout
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item pt-1">
+            <!--<a href="javascript:void(0);"><i class="nav-link fa fa-bell fa-lg"></i><span class="sec counter counter-lg"></span></a>-->
+            <div class="nav-link" href="javascript:void(1);">
+              <div class="dropdown" dropdown>
+                  <i class="dropdown-toggle" style="cursor: pointer;" dropdownToggle class="fa fa-fw fa-bell fa-lg"></i>
+                  <span *ngIf="totalCount > 0" class="dot sec counter counter-lg"></span>
+                <div style="min-width: 400px;" class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+                  <div *ngIf="totalCount=== 0" class="py-3 text-center">
+                    <strong>Trenutno nema novih prijava</strong>
+                  </div>
+                  <div *ngIf="totalCount > 0">
+                    <a *ngFor="let prijava of prijave" class="dropdown-item" routerLink="/dashboard/prijava/{{prijava.id}}">
+                      <span class="text-success">
+                        <strong>
+                          {{prijava.ime}} {{prijava.prezime}}</strong>
+                      </span>
+                      <p class="small float-right text-muted">{{prijava.datumPrijave | date}}</p>
+                      <p >{{prijava.telefon}}  {{prijava.email}}</p>
+                      <div class="dropdown-divider"></div>
+                    </a>
+                  </div>
+
+                  <a class="dropdown-item small text-center mt-2 mb-2" routerLink="/dashboard/prijave">Pogledaj sve prijave</a>
+
+                </div>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+     </div>
+    </div>
+  </nav>

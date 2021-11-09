@@ -1,0 +1,179 @@
+<div class="container pb-3 pt-5 mt-5">
+  <div  class="row-fluid pt-5 mt-5">
+    <h2 class="text-center" style="color: #066399ab;">Online prijava</h2>
+    <h4 class="text-center">Molimo popunite formu ispod</h4>
+  </div>
+  <div *ngIf="prijava" class="row pb-3 pt-3">
+    <div class="col-lg-6 pr-3" style="border-right: solid 2px #066399ab">
+
+      <form (ngSubmit)="onSubmit(rteForm.valid && rteForm.value)" #rteForm="ngForm">
+        <div class="form-group">
+          <label for="ime">Ime</label>
+          <input
+            type="text"
+            #prijavaIme="ngModel"
+            [ngClass]="{'is-invalid': prijavaIme.errors && prijavaIme.touched}"
+            [(ngModel)]="prijava.ime"
+            name="Ime"
+            id="ime"
+            class="form-control"
+            required>
+          <div *ngIf="prijavaIme.invalid" class="invalid-feedback">
+            Vaše ime je obavezno
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prezime">Prezime</label>
+          <input
+            type="text"
+            #prijavaPrezime="ngModel"
+            [ngClass]="{'is-invalid': prijavaPrezime.errors && prijavaPrezime.touched}"
+            [(ngModel)]="prijava.prezime"
+            name="Prezime"
+            id="prezime"
+            class="form-control"
+            required>
+          <div [hidden]="!prijavaPrezime.errors?.required" class="invalid-feedback">
+            Vaše prezime je obavezno
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="datumRodjenja">Datum rođenja</label>
+          <input
+            type="date"
+            #prijavaDatumRodenja="ngModel"
+            [ngClass]="{'is-invalid': prijavaDatumRodenja.errors && prijavaDatumRodenja.touched}"
+            [(ngModel)]="prijava.datumRodjenja"
+            name="datumRodjenja"
+            id="datumRodjenja"
+            class="form-control"
+            required>
+          <div [hidden]="!prijavaDatumRodenja.errors?.required" class="invalid-feedback">
+            Vaš datum rođenja je obavezan
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            #prijavaEmail="ngModel"
+            [ngClass]="{'is-invalid': prijavaEmail.errors && prijavaEmail.touched}"
+            [(ngModel)]="prijava.email"
+            name="Email"
+            id="email"
+            class="form-control"
+            required>
+          <div [hidden]="!prijavaEmail.errors?.required" class="invalid-feedback">
+            Vaš email je obavezan
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telefon">Telefon</label>
+          <input
+            type="text"
+            (keypress)="numberOnly($event)"
+            #prijavaTelefon="ngModel"
+            [ngClass]="{'is-invalid': prijavaTelefon.errors && prijavaTelefon.touched}"
+            [(ngModel)]="prijava.telefon"
+            name="Telefon"
+            id="telefon"
+            class="form-control"
+            required>
+          <div [hidden]="!prijavaTelefon.errors?.required" class="invalid-feedback">
+            Vaš broj telefona je obavezan
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="zanimanje">Zanimanje</label>
+          <input
+            type="text"
+            #prijavaZanimenja="ngModel"
+            [ngClass]="{'is-invalid': prijavaZanimenja.errors && prijavaZanimenja.touched}"
+            [(ngModel)]="prijava.zanimanje"
+            name="Zanimanje"
+            id="zanimanje"
+            class="form-control"
+            required>
+          <div [hidden]="!prijavaZanimenja.errors?.required" class="invalid-feedback">
+            Vaše zanimanje je obavezno
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prethodnoZnanje">Da li posjedujete neko prethodno znanje iz ove oblasti ? Ako je odgovor pozitivan, molimo navedite koje.</label>
+          <input
+            type="text"
+            #prijavaZnanje="ngModel"
+            [(ngModel)]="prijava.prethodnoZnanje"
+            name="prethodnoZnanje"
+            id="prethodnoZnanje"
+            class="form-control">
+        </div>
+        <div id="recaptcha-container">
+
+        </div>
+        <div class="mb-5">
+          <input type="reset"  value="Reset" class="btn btn-primary mt-4">
+          <input type="submit" [disabled]="!rteForm.valid" value="Prijavi se" class="btn btn-primary pull-right mt-4">
+        </div>
+      </form>
+    </div>
+    <div *ngIf="event" class="col-lg-6 ">
+      <h6 class="text-center mb-5">Informacije</h6>
+      <div class="row mt-5">
+        <div class="col-lg-4">
+          <b>Kategorija :</b>
+        </div>
+        <div class="col-lg-8">
+          <p>{{event.kategorija}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4">
+          <b>Naziv :</b>
+        </div>
+        <div class="col-lg-8">
+          <p>{{event.naziv}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4">
+          <b>Trajanje :</b>
+        </div>
+        <div class="col-lg-8">
+          <p>{{event.trajanje}} sedmica</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4">
+          <b>Cijena :</b>
+        </div>
+        <div class="col-lg-8">
+          <p *ngIf="event.cijena !== 0">{{event.cijena}} KM</p>
+          <p *ngIf="event.cijena === 0">Besplatno</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4">
+          <b>Početak :</b>
+        </div>
+        <div class="col-lg-8">
+          <p>{{event.datumPocetka | date}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4">
+          <b>Detalji :</b>
+        </div>
+        <div class="col-lg-8">
+          <p [innerHTML]="event.opis"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

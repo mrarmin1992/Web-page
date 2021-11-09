@@ -1,0 +1,101 @@
+<div *ngIf="dogadjaj" class="container mt-5 mb-5 pt-5" style="min-height: 100vh;">
+  <div class="row mt-5 pt-5">
+    <ol class="breadcrumb hidden-xs-down mb-5 ml-2">
+      <li class="breadcrumb-item"><a routerLink="">Početna</a></li>
+      <li class="breadcrumb-item"><a routerLink="/dogadjaji">Događaji</a></li>
+      <li class="breadcrumb-item">{{dogadjaj.naziv}}</li>
+    </ol>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <article>
+        <!-- Post header-->
+        <header class="mb-4">
+            <!-- Post title-->
+            <h1 class="fw-bolder mb-1">{{dogadjaj.naziv}}</h1>
+            <!-- Post meta content-->
+            <div class="text-muted fst-italic mb-2">Početak {{dogadjaj.datumPocetka | date}} , {{dogadjaj.objavio}}</div>
+            <!-- Post categories-->
+            <a class="badge bg-secondary text-decoration-none link-light" href="javascript:void(0)">{{dogadjaj.dogadjajKategorija}}</a>
+        </header>
+        <!-- Preview image figure-->
+        <figure class="mb-4"><img class="img-fluid rounded" src="{{dogadjaj.imageUrl}}" alt="..."></figure>
+        <!-- Post content-->
+        <section class="mb-5">
+            <div [innerHTML]="dogadjaj.opis"></div>
+        </section>
+        <table class="table mt-5">
+          <thead>
+            <tr>
+              <th>Datum početka</th>
+              <th>Vrijeme početka</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{dogadjaj.datumPocetka | date}}</td>
+              <td>{{dogadjaj.vrijemePocetka}} h</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+      <div *ngIf="slicniDogadjaji" class="content mt-5 pt-5">
+        <h4 *ngIf="slicniDogadjaji.length > 0" class="mt-5">Slični događaji</h4>
+          <div class="grid">
+            <!--<figure *ngFor="let slicna of slicneVijesti" class="effect-bubba">
+              <img src="{{slicna.imageUrl}}" alt="{{slicna.naslov}}"/>
+              <figcaption>
+                <h2>{{slicna.naslov}}</h2>
+                <p>{{slicna.podnaslov}}</p>
+              </figcaption>
+            </figure>-->
+            <figure *ngIf="slicniDogadjaji[0]" class="effect-bubba">
+              <img class="slika" src="{{slicniDogadjaji[0].imageUrl}}" alt="{{slicniDogadjaji[0].naziv}}"/>
+              <figcaption>
+                <h2>{{slicniDogadjaji[0].naziv}}</h2>
+                <p>{{slicniDogadjaji[0].objavio}}</p>
+                <a href="#">Opširnije</a>
+              </figcaption>
+            </figure>
+            <figure *ngIf="slicniDogadjaji[1]" class="effect-bubba">
+              <img class="slika" src="{{slicniDogadjaji[1].imageUrl}}" alt="{{slicniDogadjaji[1].naziv}}"/>
+              <figcaption>
+                <h2>{{slicniDogadjaji[1].naziv}}</h2>
+                <p>{{slicniDogadjaji[1].objavio}}</p>
+                <a href="#">Opširnije</a>
+              </figcaption>
+            </figure>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 offset-lg-1 col-sm-12">
+      <div>
+        <div
+          class="
+            fh5co_heading fh5co_heading_border_bottom
+            pt-3
+            py-2
+            mb-4
+          "
+        >
+          Posljednji događaji
+        </div>
+      </div>
+      <div *ngFor="let posljednji of posljednjiDogadjaji" class="row pb-3">
+        <div class="col-5 align-self-center">
+          <a href="javascript:void(0)" routerLink="/dogadjaji/{{posljednji.id}}">
+          <img
+            src="{{posljednji.imageUrl}}"
+            alt="img"
+            class="fh5co_most_trading"
+          />
+        </a>
+        </div>
+        <div class="col-7">
+          <a href="javascript:void(0)" routerLink="/dogadjaji/{{posljednji.id}}">
+            <div class="most_fh5co_treding_font">{{posljednji.naziv}}</div>
+          </a>
+          <div class="most_fh5co_treding_font_123">{{posljednji.datumPocetka | date}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
