@@ -197,16 +197,6 @@ a, a:hover {
 	word-wrap: break-word;
 	text-decoration: none;
 }
-.fh5co_suceefh5co_height_2 {
-	height: 275px;
-	overflow: hidden;
-	width: 100%;
-	position: relative;
-}
-.fh5co_suceefh5co_height_2 > img {
-	height: 300px;
-	width: 100%;
-}
 .fh5co_good_font_2 {
 	font-size: 19px;
 	color: #fff;
@@ -343,10 +333,8 @@ a, a:hover {
 	@include transition(all 0.5s);
 		
 }
-
-
-.fh5co_news_img > img {
-	height: 260px;
+.fh5co_news_img img {
+	height: 200px;
 	min-width: 100%;
 	
 }
