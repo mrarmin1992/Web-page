@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  // tslint:disable-next-line: typedef
   changeTheme(primary: string, secondary: string) {
     document.documentElement.style.setProperty('--primary-color', primary);
     document.documentElement.style.setProperty('--secondary-color', secondary);
