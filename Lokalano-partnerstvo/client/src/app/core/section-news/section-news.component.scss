@@ -34,10 +34,6 @@ $yellow:#f5bc04;
 	transition:         all $transition ease;
 }
 
-
-
-
-
 .fh5co_display_table:hover, .fh5co_display_table:focus {
 	display: table;
 	color: #777;
@@ -55,12 +51,10 @@ $yellow:#f5bc04;
 	padding-bottom: 25px;
 }
 .fh5co_text_select_option {
-	//padding-bottom: 20px;
 	margin: 0 10px;
 	position: relative;
 	top: -10px;
 }
-
 .fh5co_suceefh5co_height {
 	height: 550px;
 	overflow: hidden;
@@ -69,9 +63,8 @@ $yellow:#f5bc04;
 }
 .fh5co_suceefh5co_height  img {
 	width: auto;
-	height: 550px;
-	object-fit: cover;
-
+	height: 570px;
+	object-fit:cover;
 }
 .paddding {
 	padding-left: 0!important;
@@ -107,13 +100,13 @@ $yellow:#f5bc04;
 	word-wrap: break-word;
 	text-decoration: none;
 }
-.fh5co_suceefh5co_height_2 {
+.fh5co_suceefh5co_height_2{
 	height: 275px;
 	overflow: hidden;
 	width: 100%;
 	position: relative;
 }
-.fh5co_suceefh5co_height_2 > img {
+.fh5co_suceefh5co_height_2 img {
 	height: 300px;
 	width: 100%;
 }
