@@ -26,7 +26,6 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPhotoService _photoService;
         private readonly UserManager<AppUser> _userManager;
-
         private readonly IConfiguration _config;
         public KurseviController(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService photoService, IConfiguration config, UserManager<AppUser> userManager)
         {
@@ -36,7 +35,6 @@ namespace API.Controllers
             _photoService = photoService;
             _config = config;
         }
-
         // GET /api/kursevi/all
         [HttpGet("All")]
         public async Task<ActionResult<Pagination<KurseviToReturnDto>>> GetAllKursevi(
@@ -51,7 +49,6 @@ namespace API.Controllers
             var data = _mapper.Map<IReadOnlyList<Kurs>, IReadOnlyList<KurseviToReturnDto>>(kursevi);
             return Ok(new Pagination<KurseviToReturnDto>(kursParams.PageIndex, kursParams.PageSize, totalItems, data));
         }
-
         // GET /api/kursevi
         [HttpGet]
         [Authorize(Roles = "Member,Admin")]
@@ -82,8 +79,6 @@ namespace API.Controllers
                 return Ok(new Pagination<KurseviToReturnDto>(kursParams.PageIndex, kursParams.PageSize, totalItems, data));
             }
         }
-
-
         // GET /api/kursevi/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<KurseviToReturnDto>> GetKurs(int id)
@@ -117,7 +112,6 @@ namespace API.Controllers
                 return Ok(_mapper.Map<Kurs, KurseviToReturnDto>(kurs));
             }
         }
-
         // GET /api/kursevi/{id}/prijava
         [HttpGet("{id}/prijava")]
         public async Task<ActionResult<KurseviToReturnDto>> GetKursPrijava(int id)
@@ -130,14 +124,12 @@ namespace API.Controllers
                     return Ok(_mapper.Map<Kurs, KurseviToReturnDto>(kurs));
                 }
         }
-
         // GET /api/kursevi/kursKategorije
         [HttpGet("KursKategorije")]
         public async Task<ActionResult<IReadOnlyList<KursKategorija>>> GetKategorije()
         {
             return Ok(await _unitOfWork.Repository<KursKategorija>().ListAllAsync());
         }
-
         // POST /api/kursevi
         [HttpPost]
         [Authorize(Roles = "Member,Admin")]
@@ -158,7 +150,6 @@ namespace API.Controllers
 
             return Ok(kurs);
         }
-
         // PUT /api/kursevi/{id}
         [HttpPut("{id}")]
         [Authorize(Roles = "Member, Admin")]
@@ -173,7 +164,9 @@ namespace API.Controllers
             {
                 return BadRequest(new ApiResponse(401, "Nista Autorizovani"));
             }
+            
             _mapper.Map(kursToUpdate, kurs);
+
             var count = _config["ApiUrl"].Length;
             if (!string.IsNullOrEmpty(kurs.ImageUrl))
             {

@@ -25,7 +25,7 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@schematics/angular": "^9.1.15",
-    "@syncfusion/ej2-angular-richtexteditor": "^19.2.49",
+    "@syncfusion/ej2-angular-richtexteditor": "^19.4.38",
     "bootstrap": "^5.0.2",
     "font-awesome": "^4.7.0",
     "gsap": "^3.8.0",

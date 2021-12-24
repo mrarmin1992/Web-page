@@ -32,7 +32,6 @@ namespace API.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
         // GET /api/obuka/all
         [HttpGet("All")]
         public async Task<ActionResult<Pagination<ObukaToReturnDto>>> GetSveObuke([FromQuery] ObukaSpecParams obukaParams)
@@ -47,7 +46,6 @@ namespace API.Controllers
 
             return Ok(new Pagination<ObukaToReturnDto>(obukaParams.PageIndex, obukaParams.PageSize, totalItems, data));
         }
-
         // GET /api/obuka
         [HttpGet]
         [Authorize(Roles = "Admin,Member")]
@@ -80,7 +78,6 @@ namespace API.Controllers
                 return Ok(new Pagination<ObukaToReturnDto>(obukaParams.PageIndex, obukaParams.PageSize, totalItems, data));
             }
         }
-
         // GET /api/obuka/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<ObukaToReturnDto>> GetObuka(int id)
@@ -118,7 +115,6 @@ namespace API.Controllers
                 return Ok(_mapper.Map<Obuka, ObukaToReturnDto>(obuka));
             }
         }
-
         // GET /api/obuka/{id}/prijava
         [HttpGet("{id}/prijava")]
         public async Task<ActionResult<ObukaToReturnDto>> GetObukaPrijava(int id)
@@ -132,14 +128,12 @@ namespace API.Controllers
                     return Ok(_mapper.Map<Obuka, ObukaToReturnDto>(obuka));
                 }
         }
-
         // GET /api​/Obuka​/ObukaKategorije
         [HttpGet("ObukaKategorije")]
         public async Task<ActionResult<IReadOnlyList<ObukaKategorija>>> GetKategorije()
         {
             return Ok(await _unitOfWork.Repository<ObukaKategorija>().ListAllAsync());
         }
-
         // POST /api/obuka
         [HttpPost]
         [Authorize(Roles = "Admin,Member")]
@@ -160,7 +154,6 @@ namespace API.Controllers
 
             return Ok(obuka);
         }
-
         // PUT /api/obuka/{id}
         [HttpPut("{id}")]
         [Authorize(Roles = "Member,Admin")]

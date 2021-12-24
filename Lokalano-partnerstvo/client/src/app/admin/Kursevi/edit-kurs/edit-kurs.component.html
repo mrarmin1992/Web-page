@@ -265,7 +265,14 @@
                   id="iframeRTE"
                   [toolbarSettings]="tools"
                   [iframeSettings]="iframe"
-                  [height]="height"
+                  [enableResize]='true'
+                  [fontFamily]='fontFamily'
+                  [fontSize]='fontSize'
+                  [format]='format'
+                  [formatter]='formatter'
+                  [enabled]='true'
+                  [insertImageSettings]='insertImageSettings' 
+                  [height]="auto"
                   required
                   #opis="ngModel"
                   id="opis"
