@@ -160,7 +160,7 @@ namespace Infrastructure.Migrations
                     DatumPocetka = table.Column<DateTime>(type: "datetime2", nullable: false),
                     KursKategorijaId = table.Column<int>(type: "int", nullable: false),
                     Objavio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Opis = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Opis = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KratakOpis = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Trajanje = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
