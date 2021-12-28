@@ -19,14 +19,13 @@ $yellow:#ed563b;
 }
 .fh5co_news_img {
 	height: 200px;
-
 	overflow: hidden;
 	position: relative;
 	top: 0;
 
 
 }
-.fh5co_news_img > img {
+.fh5co_news_img img {
 	height: 260px;
 	min-width: 100%;
 }
