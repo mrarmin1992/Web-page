@@ -31,6 +31,7 @@ export class PublikacijeService {
       );
   }
 
+  // tslint:disable-next-line: typedef
   getPublikacija(id: number) {
     return this.http.get<Publikacija>(this.baseUrl + 'publikacije/' + id);
   }
