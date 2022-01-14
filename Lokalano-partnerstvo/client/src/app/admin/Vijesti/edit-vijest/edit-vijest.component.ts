@@ -7,6 +7,7 @@ import {
   LinkService,
   ImageService,
   HtmlEditorService,
+  ImageSettingsModel,
 } from '@syncfusion/ej2-angular-richtexteditor';
 import { base64ToFile, ImageCroppedEvent } from 'ngx-image-cropper';
 import { ConfirmationDialogService } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.service';
@@ -29,6 +30,7 @@ export class EditVijestComponent implements OnInit {
   vijest: VijestFormValues;
   vijestiKategorije: VijestiKategorije[];
   selectedObj = 'Odaberite kategoriju';
+  public insertImageSettings: ImageSettingsModel = { allowedTypes: ['.jpeg', '.jpg', '.png'], display: 'inline', width: 'auto', height: 'auto', saveFormat: 'Blob', saveUrl: null, path: null, };
   imageChangedEvent: any = '';
   croppedImage: any = '';
   public fontFamily: object = {
@@ -102,6 +104,12 @@ export class EditVijestComponent implements OnInit {
       '|',
       'Print',
       'SourceCode',
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+      'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen'
     ],
   };
   public iframe: object = { enable: true };

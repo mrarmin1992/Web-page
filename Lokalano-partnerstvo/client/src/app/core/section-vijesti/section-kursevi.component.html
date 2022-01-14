@@ -7,6 +7,9 @@
             VIJESTI
           </div>
         </div>
+
+
+        
         <div *ngIf="vijesti[0]" class="row pb-4">
           <div class="col-md-6">
             <div class="fh5co_hover_news_img">
@@ -36,6 +39,9 @@
             <div class="fh5co_consectetur">{{ vijesti[0].podnaslov }}</div>
           </div>
         </div>
+
+
+
         <div *ngIf="vijesti[1]" class="row pb-4">
           <div class="col-md-6">
             <div class="fh5co_hover_news_img">
@@ -44,6 +50,7 @@
                   <img
                     src="{{ vijesti[1].imageUrl }}"
                     alt="{{ vijesti[1].naslov }}"
+                  
                   />
                   <div class="fh5co_suceefh5co_height_position_absolute"></div>
                 </a>
@@ -51,6 +58,8 @@
               <div></div>
             </div>
           </div>
+
+
           <div class="col-md-6 animate-box">
             <a
               href="javascript:void(0)"

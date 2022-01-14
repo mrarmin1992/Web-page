@@ -34,7 +34,7 @@ export class ONamaComponent implements OnInit {
       this.partneri.forEach(item => {
         item.opis = item.opis.substr(0, 200);
         item.opis += '...';
-      })
+      });
       this.totalCount = resp.count;
     });
   }

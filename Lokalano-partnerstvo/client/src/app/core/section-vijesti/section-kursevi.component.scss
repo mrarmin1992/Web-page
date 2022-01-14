@@ -197,16 +197,6 @@ a, a:hover {
 	word-wrap: break-word;
 	text-decoration: none;
 }
-.fh5co_suceefh5co_height_2 {
-	height: 275px;
-	overflow: hidden;
-	width: 100%;
-	position: relative;
-}
-.fh5co_suceefh5co_height_2 > img {
-	height: 300px;
-	width: 100%;
-}
 .fh5co_good_font_2 {
 	font-size: 19px;
 	color: #fff;
@@ -341,10 +331,12 @@ a, a:hover {
 	top: 0;
 	@include box-shadow(0, 2px, 3px, 1px, rgba(0,0,0,0));
 	@include transition(all 0.5s);
+		
 }
-.fh5co_news_img > img {
-	height: 260px;
+.fh5co_news_img img {
+	height: 200px;
 	min-width: 100%;
+	
 }
 .c_b {
 	color: #424040;
@@ -384,6 +376,7 @@ a, a:hover {
 	top: 0;
 	right: 0;
 	z-index: 20;
+
 }
 .fh5co_hover_news_img_video_tag_position_absolute > img {
 	height: 130%;

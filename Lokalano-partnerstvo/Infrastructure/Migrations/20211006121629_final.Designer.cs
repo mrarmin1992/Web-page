@@ -142,7 +142,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Opis")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PhotoId")
                         .HasColumnType("int");

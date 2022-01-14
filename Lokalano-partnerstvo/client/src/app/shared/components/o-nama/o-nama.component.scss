@@ -1,17 +1,12 @@
-#container {
-  background-image: linear-gradient(
-      to top,
-      rgb(255, 255, 255) 10%,
-      rgba(41, 96, 168, 0) 100%
-    ),
-    url(../../../../assets/img/mreza9.jpg);
 
-  display: flex;
-  overflow-x: scroll;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  margin: 0 auto;
-
+.partneri
+{
+  background-color: whitesmoke;
+  padding-left: 27%;
+}
+.partneri1
+{
+  background-image: url(../../../../assets/img/buk1.jpg);
 }
 
 img {
@@ -28,6 +23,7 @@ img {
 .card-text{
   text-align: center;
   padding: 10% 5%;
+  color: white;
 }
 
 a {text-align: center;
@@ -40,14 +36,13 @@ a {text-align: center;
   margin-top: 0;
   padding: 15% 0;
   width: 50%;
-;
   
 }
 .slikapartner{
   display: block;
-  margin-left: 35%;
+  margin-left: 39%;
   margin-right: 35%;
-  width: 30%;
+  width: 40%;
 }
 .btn{
   display: block;
@@ -59,7 +54,4 @@ a {text-align: center;
   border: 0;
   color: #ffffff;
   font-size: 110%;
-  
-  
-
 }

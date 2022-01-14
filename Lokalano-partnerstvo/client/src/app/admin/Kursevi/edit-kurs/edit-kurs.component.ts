@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   HtmlEditorService,
   ImageService,
+  ImageSettingsModel,
   LinkService,
   ToolbarService,
 } from '@syncfusion/ej2-angular-richtexteditor';
@@ -31,6 +32,7 @@ export class EditKursComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
   selectedObj = 'Odaberite kategoriju';
+  public insertImageSettings: ImageSettingsModel = { allowedTypes: ['.jpeg', '.jpg', '.png'], display: 'inline', width: 'auto', height: 'auto', saveFormat: 'Blob', saveUrl: null, path: null, };
   public fontFamily: object = {
     items: [
       {
@@ -102,6 +104,12 @@ export class EditKursComponent implements OnInit {
       '|',
       'Print',
       'SourceCode',
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+      'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen'
     ],
   };
   public iframe: object = { enable: true };

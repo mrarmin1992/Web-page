@@ -52,6 +52,7 @@ namespace API.Controllers
 
         // GET /api/publikacije
         [HttpGet]
+        [Authorize(Roles = "Admin,Member")]
         public async Task<ActionResult<Pagination<PublikacijeToReturnDto>>> GetPublikacije([FromQuery] PublikacijeSpecParams publikacijeParams)
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
