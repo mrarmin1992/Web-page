@@ -46,7 +46,7 @@ namespace API.Controllers
 
             return Ok(new Pagination<ObukaToReturnDto>(obukaParams.PageIndex, obukaParams.PageSize, totalItems, data));
         }
-        // GET /api/obuka
+        // GET /api/obuka - test
         [HttpGet]
         [Authorize(Roles = "Admin,Member")]
         public async Task<ActionResult<Pagination<ObukaToReturnDto>>> GetObuke([FromQuery] ObukaSpecParams obukaParams)
